@@ -3502,7 +3502,6 @@ cls
     "*Wallet*"
     "*Whiteboard*"
     "*WindowsAlarms*"
-    "*windowscommunicationsapps*"
     "*WindowsFeedbackHub*"
     "*WindowsMaps*"
     "*WindowsPhone*"
