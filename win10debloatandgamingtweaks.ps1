@@ -47,6 +47,7 @@ $tweaks = @(
 	"askDefender",
 	"DorEOneDrive",                  #Option to Install Or Uninstall Microsoft One Drive!
 	"askXBOX",
+	"Windows11Extra",
 	#"askMSPPS",                      #Option to enable or disable Microsoft Software Protection Platform Service” Causing High CPU Usage
 	#"askMSWSAPPX",                   #Option to enable or disable Wsappx to Fix 100% Disk Usage in Windows 10 in older systems
 
@@ -2663,10 +2664,7 @@ Function UnpinStartMenuTiles {
 	$errpref = $ErrorActionPreference #save actual preference
         $ErrorActionPreference = "silentlycontinue"
 		If ([System.Environment]::OSVersion.Version.Build -ge 22000) {
-		New-Item -Path "HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" -Force | Out-Null
-		Set-ItemProperty -Path "HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" -Name "(Default)" -Type String -Value ""
 		Set-ItemProperty -Path "HKLM:\Software\Policies\Microsoft\Windows\Explorer" -Name "HideRecommendedSection" -Type DWord -Value 1
-		Get-appxpackage -all *shellexperience* -packagetype bundle |% {add-appxpackage -register -disabledevelopmentmode ($_.installlocation + “\appxmetadata\appxbundlemanifest.xml”)}
 	} Else {
 	Invoke-WebRequest -Uri "https://git.io/JL54C" -OutFile "$env:UserProfile\StartLayout.xml" -ErrorAction SilentlyContinue
 	Import-StartLayout -layoutpath "$env:UserProfile\StartLayout.xml" -MountPath "$env:SystemDrive\"
@@ -2706,6 +2704,15 @@ Stop-Process -name explorer | Out-Null
 ##########
 # DaddyMadu Quality Of Life Tweaks
 ##########
+# Windows 11 Extra Tweaks
+function Windows11Extra {
+	If ([System.Environment]::OSVersion.Version.Build -ge 22000) {
+		New-Item -Path "HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" -Force | Out-Null
+		Set-ItemProperty -Path "HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" -Name "(Default)" -Type String -Value ""
+		Set-ItemProperty -Path "HKLM:\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "TaskbarAl" -Type DWord -Value 0
+		Get-appxpackage -all *shellexperience* -packagetype bundle |% {add-appxpackage -register -disabledevelopmentmode ($_.installlocation + “\appxmetadata\appxbundlemanifest.xml”)}
+	}
+}
 # Enable Quality Of Life Tweaks
 Function QOL {
        	Write-Output "Enabling DaddyMadu Quality of Life Tweaks..."
