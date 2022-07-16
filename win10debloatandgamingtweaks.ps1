@@ -401,7 +401,7 @@ Function askXBOX {
  {
     cls
     Write-Host "================ Do You Want To Disable XBOX features and all related APPS? ================"
-	Write-ColorOutput "WARRNING: REMOVING XBOX APPS will make Win+G do nothing!" Red
+	Write-ColorOutput "WARNING: REMOVING XBOX APPS will make Win+G do nothing!" Red
     Write-Host "Y: Press 'Y' to Disable XBOX features."
     Write-Host "N: Press 'N' to Enable XBOX features."
     Write-Host "Q: Press 'Q' to Skip this."
@@ -446,7 +446,7 @@ Function askXBOX {
 	
 }
 
-#Enable Or Disable MSI Mode For Supported Cards, WARRNING ENABLING MSI MODE MIGHT CRUSH YOUR SYSTEM! IF IT HAPPENS PLEASE RESTORE LAST WORKING SYSTEM RESTORE POINT AND DON'T ENABLE MSI MODE ON THIS SYSTEM AGAIN!
+#Enable Or Disable MSI Mode For Supported Cards, WARNING ENABLING MSI MODE MIGHT CRUSH YOUR SYSTEM! IF IT HAPPENS PLEASE RESTORE LAST WORKING SYSTEM RESTORE POINT AND DON'T ENABLE MSI MODE ON THIS SYSTEM AGAIN!
 Function MSIMode {
 $errpref = $ErrorActionPreference #save actual preference
 $ErrorActionPreference = "silentlycontinue"
@@ -1030,7 +1030,7 @@ Function askMSPPS {
  {
     cls
     Write-Host "================ Do you have High CPU Usage from Microsoft Software Protection Platform Service? ================"
-	Write-ColorOutput "Warrning: Windows Default is ENABLED, if you Disabled it, Windows 10/Office will show not activated state but you can use it as normal" Red
+	Write-ColorOutput "WARNING: Windows Default is ENABLED, if you Disabled it, Windows 10/Office will show not activated state but you can use it as normal" Red
     Write-Host "Y: Press 'Y' to Disable this."
     Write-Host "N: Press 'N' to Enable this."
 	Write-Host "Q: Press 'Q' to stop the entire script."
@@ -1063,7 +1063,7 @@ Function askMSWSAPPX {
  {
     cls
     Write-Host "================ Do you want to disable Microsoft Store and Disable WSAPPX Service? ================"
-	Write-ColorOutput "Warrning: Windows Default is ENABLED, if you Disabled it and wanted to enable it again and restore Microsoft Store Please run the script twise and choose N" Red
+	Write-ColorOutput "WARNING: Windows Default is ENABLED, if you Disabled it and wanted to enable it again and restore Microsoft Store Please run the script twise and choose N" Red
     Write-Host "Y: Press 'Y' to Disable this."
     Write-Host "N: Press 'N' to Enable this."
 	Write-Host "Q: Press 'Q' to stop the entire script."
