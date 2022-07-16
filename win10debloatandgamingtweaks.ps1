@@ -2496,7 +2496,10 @@ Function InstallMediaPlayer {
 # Uninstall Internet Explorer
 Function UninstallInternetExplorer {
 	Write-Output "Uninstalling Internet Explorer..."
+	If ([System.Environment]::OSVersion.Version.Build -ge 22000) {
+	} Else {
 	Disable-WindowsOptionalFeature -Online -FeatureName "Internet-Explorer-Optional-$env:PROCESSOR_ARCHITECTURE" -NoRestart -WarningAction SilentlyContinue | Out-Null
+	}
 }
 
 # Install Internet Explorer
