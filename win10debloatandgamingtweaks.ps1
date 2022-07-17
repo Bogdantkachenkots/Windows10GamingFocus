@@ -2667,7 +2667,6 @@ Function UnpinStartMenuTiles {
 	$errpref = $ErrorActionPreference #save actual preference
         $ErrorActionPreference = "silentlycontinue"
 		If ([System.Environment]::OSVersion.Version.Build -ge 22000) {
-		Set-ItemProperty -Path "HKLM:\Software\Policies\Microsoft\Windows\Explorer" -Name "HideRecommendedSection" -Type DWord -Value 1
 		Set-ItemProperty -Path "HKCU:\Software\Policies\Microsoft\Windows\Explorer" -Name "HideRecommendedSection" -Type DWord -Value 1
 	} Else {
 	Invoke-WebRequest -Uri "https://git.io/JL54C" -OutFile "$env:UserProfile\StartLayout.xml" -ErrorAction SilentlyContinue
